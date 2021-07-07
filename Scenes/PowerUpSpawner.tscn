@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/PowerUpSpawnTimer.gd" type="Script" id=1]
+
+[node name="PowerUpSpawner" type="Node"]
+
+[node name="PowerUpSpawnTimer" type="Timer" parent="."]
+wait_time = 7.5
+autostart = true
+script = ExtResource( 1 )
+[connection signal="timeout" from="PowerUpSpawnTimer" to="PowerUpSpawnTimer" method="_on_PowerUpSpawnTimer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Galaga Theme Remix.wav-88a5d1be98f6243db255c5f89557e036.sample"
+
+[deps]
+
+source_file="res://Audio/Classic_Galaga_Audio/Galaga Theme Remix.wav"
+dest_files=[ "res://.import/Galaga Theme Remix.wav-88a5d1be98f6243db255c5f89557e036.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

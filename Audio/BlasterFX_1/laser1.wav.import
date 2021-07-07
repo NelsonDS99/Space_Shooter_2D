@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laser1.wav-74c617953f0a59b651062295f12674b9.sample"
+
+[deps]
+
+source_file="res://Audio/BlasterFX_1/laser1.wav"
+dest_files=[ "res://.import/laser1.wav-74c617953f0a59b651062295f12674b9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NenadSimic - Muffled Distant Explosion.wav-fac3db44abafa6a0ba94e7fadf7310c2.sample"
+
+[deps]
+
+source_file="res://Audio/Explosions/NenadSimic - Muffled Distant Explosion.wav"
+dest_files=[ "res://.import/NenadSimic - Muffled Distant Explosion.wav-fac3db44abafa6a0ba94e7fadf7310c2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

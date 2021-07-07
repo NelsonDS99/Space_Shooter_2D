@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Death Is Just Another Path.wav-e494fdba366f8626c971d5bc69ef6d69.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Death Is Just Another Path.wav"
+dest_files=[ "res://.import/Death Is Just Another Path.wav-e494fdba366f8626c971d5bc69ef6d69.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

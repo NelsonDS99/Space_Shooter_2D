@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Background/BackdropBlackLittleSparkBlack.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/MainMenuButtonButton.gd" type="Script" id=2]
+[ext_resource path="res://Themes/SelectedButtonTheme.tres" type="StyleBox" id=3]
+[ext_resource path="res://Themes/NonSelectedButtonTheme.tres" type="StyleBox" id=4]
+[ext_resource path="res://Art/Fonts/Pixeboy-z8XGD.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/FinalScore.gd" type="Script" id=6]
+[ext_resource path="res://Audio/Music/Death Is Just Another Path.wav" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+font_data = ExtResource( 5 )
+
+[node name="EndScreen" type="Node2D"]
+
+[node name="MenuBackground" type="Sprite" parent="."]
+position = Vector2( 510.44, 301.175 )
+scale = Vector2( 2.02734, 1.1984 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 416.0
+margin_top = 384.0
+margin_right = 608.0
+margin_bottom = 448.0
+focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_bottom = NodePath("../NewGameButton")
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK TO MAIN MENU"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+referencePath = "res://Scenes/MenuScreen.tscn"
+startFocused = true
+
+[node name="GameOverLabel" type="Label" parent="."]
+margin_left = 320.0
+margin_right = 704.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+margin_left = 384.0
+margin_top = 192.0
+margin_right = 640.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 3 )
+text = "final score"
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 8.0
+autoplay = true

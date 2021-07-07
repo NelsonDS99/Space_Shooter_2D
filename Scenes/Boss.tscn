@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/2.png" type="Texture" id=1]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/1.png" type="Texture" id=2]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/3.png" type="Texture" id=3]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/8.png" type="Texture" id=4]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/4.png" type="Texture" id=5]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/5.png" type="Texture" id=6]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/6.png" type="Texture" id=7]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Red/Enemy_animation/7.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Boss.gd" type="Script" id=9]
+[ext_resource path="res://Art/BlueHealthBar.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Boss" type="KinematicBody2D"]
+position = Vector2( 33.8924, 10.1083 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1.10298, -48.109 )
+rotation = 3.14159
+scale = Vector2( 0.470564, 0.436307 )
+frames = SubResource( 1 )
+frame = 6
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite" groups=[
+"Enemy",
+]]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Hitbox"]
+scale = Vector2( 19.053, 18.5321 )
+shape = SubResource( 2 )
+
+[node name="HealthDisplay" type="Node2D" parent="."]
+position = Vector2( -28.5574, -111.437 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Healthbar" type="TextureProgress" parent="HealthDisplay"]
+margin_left = -32.0
+margin_right = 86.0
+margin_bottom = 40.0
+value = 100.0
+texture_progress = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftSide" type="Position2D" parent="."]
+rotation = -2.61799
+
+[node name="Front" type="Position2D" parent="."]
+rotation = -3.14159
+
+[node name="RightSide" type="Position2D" parent="."]
+rotation = -3.66519
+[connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]
+[connection signal="area_entered" from="AnimatedSprite/Hitbox" to="." method="_on_Hitbox_area_entered"]

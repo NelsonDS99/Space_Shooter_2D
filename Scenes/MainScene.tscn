@@ -1,0 +1,133 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Art/RideTheFader-1XKg.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/MineEnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/EnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ShipParticles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/WaveEnemySpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Ammo.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=8]
+[ext_resource path="res://Audio/BlasterFX_1/laser1.wav" type="AudioStream" id=9]
+[ext_resource path="res://Art/Spaceship_art_pack_2/A5.png" type="Texture" id=10]
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Background/background.jpg" type="Texture" id=11]
+[ext_resource path="res://Art/Fonts/Pixeboy-z8XGD.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Audio/Music/Final Boss Battle 6 V1.WAV" type="AudioStream" id=13]
+[ext_resource path="res://Art/Particles/Player_ParticlesMaterial.tres" type="Material" id=14]
+[ext_resource path="res://Scripts/MainScene.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/PowerUpSpawner.tscn" type="PackedScene" id=16]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 19.2424
+height = 59.9646
+
+[sub_resource type="DynamicFont" id=2]
+size = 52
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 28
+font_data = ExtResource( 12 )
+
+[node name="MainScene" type="Node2D"]
+position = Vector2( 511.244, 301.674 )
+script = ExtResource( 15 )
+
+[node name="background" type="Sprite" parent="."]
+scale = Vector2( 2.01, 1.175 )
+texture = ExtResource( 11 )
+
+[node name="Player" type="KinematicBody2D" parent="." groups=[
+"Player",
+]]
+position = Vector2( 9.354, 275.99 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PlayerSprite" type="Sprite" parent="Player"]
+position = Vector2( -57.6163, -39.5366 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="blasterSound" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 9 )
+volume_db = 8.0
+
+[node name="fireDelayTimer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Particles2D" parent="Player" instance=ExtResource( 4 )]
+position = Vector2( 0, -40 )
+rotation = 3.14159
+local_coords = false
+process_material = ExtResource( 14 )
+
+[node name="Hitbox" type="Area2D" parent="Player" groups=[
+"Player",
+]]
+position = Vector2( -2.9126, -7.4281 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
+position = Vector2( -1.78381, -3.5675 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 3 )]
+
+[node name="UI" type="Node2D" parent="."]
+position = Vector2( -495.244, -293.674 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Control" type="Control" parent="UI"]
+light_mask = 1025
+margin_right = 1028.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UI/Control"]
+margin_left = 3.0
+margin_top = -5.0
+margin_right = 1029.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo" type="Label" parent="UI/Control"]
+margin_right = 75.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.145098, 0.976471, 0.027451, 1 )
+uppercase = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveEnemySpawner" parent="." instance=ExtResource( 5 )]
+
+[node name="MineEnemySpawner" parent="." instance=ExtResource( 2 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = 8.0
+autoplay = true
+
+[node name="PowerUpSpawner" parent="." instance=ExtResource( 16 )]
+[connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_Hitbox_area_entered"]

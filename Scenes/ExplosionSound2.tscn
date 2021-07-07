@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Audio/Explosions/explosion.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/ExplosionSound2.gd" type="Script" id=2]
+
+[node name="ExplosionSound2" type="AudioStreamPlayer2D"]
+stream = ExtResource( 1 )
+volume_db = 10.0
+pitch_scale = 0.75
+script = ExtResource( 2 )

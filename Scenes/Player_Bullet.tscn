@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Player_Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Art/red_beam.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.93814
+height = 51.0631
+
+[node name="Player_Bullet" type="Area2D" groups=[
+"Enemy_damager",
+]]
+position = Vector2( 499.451, 297.925 )
+scale = Vector2( 0.5, 0.4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="red_beam" type="Sprite" parent="."]
+position = Vector2( 0.494293, 0.138397 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.707123, 0 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.353516, 3.33786e-05 )
+scale = Vector2( 1.03535, 3.43068 )
+[connection signal="area_entered" from="." to="." method="_on_Player_Bullet_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Player_Bullet_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

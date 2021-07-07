@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 90, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+
+[node name="ShipParticles" type="Particles2D"]
+position = Vector2( 1, 3 )
+amount = 200
+lifetime = 0.7
+randomness = 0.51
+process_material = SubResource( 1 )

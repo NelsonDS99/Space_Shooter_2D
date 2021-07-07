@@ -1,0 +1,261 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Background/background.jpg" type="Texture" id=1]
+[ext_resource path="res://Art/Classic_Galaga_Art/Daco_2352014.png" type="Texture" id=2]
+[ext_resource path="res://Audio/BlasterFX_1/laser1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scripts/Player_Galaga.gd" type="Script" id=4]
+[ext_resource path="res://Audio/Classic_Galaga_Audio/Galaga Theme Remix.wav" type="AudioStream" id=5]
+[ext_resource path="res://Art/Fonts/Pixeboy-z8XGD.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/ClassicEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/ClassicEnemyDive.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GalagaScore.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/ClassicGalaga.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/MainMenuButtonButton.gd" type="Script" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.88187
+height = 15.7177
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 6 )
+
+[node name="ClassicGalaga" type="Node2D"]
+position = Vector2( 511.487, 298.769 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background_Galaga" type="Sprite" parent="."]
+position = Vector2( 0.171295, 3.96661 )
+scale = Vector2( 2.0402, 1.23161 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player_Galaga" type="KinematicBody2D" parent="."]
+position = Vector2( -7.48737, 285.231 )
+scale = Vector2( 2.0402, 1.23161 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Player_GalagaSprite" type="Sprite" parent="Player_Galaga"]
+position = Vector2( -0.0273438, 0.00976563 )
+scale = Vector2( 0.019976, 0.0330909 )
+texture = ExtResource( 2 )
+
+[node name="Galaga_BlasterSound" type="AudioStreamPlayer" parent="Player_Galaga"]
+stream = ExtResource( 3 )
+volume_db = 8.0
+
+[node name="Galaga_fireDelayTimer" type="Timer" parent="Player_Galaga"]
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="Player_Galaga"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Galaga/Hitbox"]
+shape = SubResource( 1 )
+
+[node name="Galaga_IntroMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 8.0
+autoplay = true
+
+[node name="Score" type="Label" parent="."]
+margin_left = -135.487
+margin_top = -298.769
+margin_right = 112.513
+margin_bottom = -234.769
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.909804, 0.0666667, 0.0666667, 1 )
+text = "SCORE"
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="TextureProgress" parent="."]
+margin_left = -495.0
+margin_top = 253.0
+margin_right = -279.0
+margin_bottom = 306.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassicEnemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( -319.487, -170.769 )
+
+[node name="ClassicEnemy31" parent="." instance=ExtResource( 7 )]
+position = Vector2( -383.487, -170.769 )
+
+[node name="ClassicEnemy37" parent="." instance=ExtResource( 7 )]
+position = Vector2( -447.487, -170.769 )
+
+[node name="ClassicEnemy38" parent="." instance=ExtResource( 7 )]
+position = Vector2( -447.487, -138.769 )
+
+[node name="ClassicEnemy39" parent="." instance=ExtResource( 7 )]
+position = Vector2( -447.487, -106.769 )
+
+[node name="ClassicEnemy32" parent="." instance=ExtResource( 7 )]
+position = Vector2( -383.487, -138.769 )
+
+[node name="ClassicEnemy33" parent="." instance=ExtResource( 7 )]
+position = Vector2( -383.487, -106.769 )
+
+[node name="ClassicEnemy34" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320.513, -170.769 )
+
+[node name="ClassicEnemy35" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320.513, -138.769 )
+
+[node name="ClassicEnemy36" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320.513, -106.769 )
+
+[node name="ClassicEnemy2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -255.487, -170.769 )
+
+[node name="ClassicEnemy3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -191.487, -170.769 )
+
+[node name="ClassicEnemy4" parent="." instance=ExtResource( 7 )]
+position = Vector2( -127.487, -170.769 )
+
+[node name="ClassicEnemy5" parent="." instance=ExtResource( 7 )]
+position = Vector2( -63.487, -170.769 )
+
+[node name="ClassicEnemy6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0.513, -170.769 )
+
+[node name="ClassicEnemy7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 64.513, -170.769 )
+
+[node name="ClassicEnemy8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 128.513, -170.769 )
+
+[node name="ClassicEnemy9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 192.513, -170.769 )
+
+[node name="ClassicEnemy10" parent="." instance=ExtResource( 7 )]
+position = Vector2( -255.487, -138.769 )
+
+[node name="ClassicEnemy11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 256.513, -170.769 )
+
+[node name="ClassicEnemy12" parent="." instance=ExtResource( 7 )]
+position = Vector2( -319.487, -138.769 )
+
+[node name="ClassicEnemy13" parent="." instance=ExtResource( 7 )]
+position = Vector2( -191.487, -138.769 )
+
+[node name="ClassicEnemy14" parent="." instance=ExtResource( 7 )]
+position = Vector2( -127.487, -138.769 )
+
+[node name="ClassicEnemy15" parent="." instance=ExtResource( 7 )]
+position = Vector2( -63.487, -138.769 )
+
+[node name="ClassicEnemy16" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0.513, -138.769 )
+
+[node name="ClassicEnemy17" parent="." instance=ExtResource( 7 )]
+position = Vector2( 64.513, -138.769 )
+
+[node name="ClassicEnemy18" parent="." instance=ExtResource( 7 )]
+position = Vector2( 128.513, -138.769 )
+
+[node name="ClassicEnemy19" parent="." instance=ExtResource( 7 )]
+position = Vector2( 192.513, -138.769 )
+
+[node name="ClassicEnemy20" parent="." instance=ExtResource( 7 )]
+position = Vector2( 256.513, -138.769 )
+
+[node name="ClassicEnemy21" parent="." instance=ExtResource( 7 )]
+position = Vector2( -319.487, -106.769 )
+
+[node name="ClassicEnemy22" parent="." instance=ExtResource( 7 )]
+position = Vector2( -255.487, -106.769 )
+
+[node name="ClassicEnemy23" parent="." instance=ExtResource( 7 )]
+position = Vector2( -191.487, -106.769 )
+
+[node name="ClassicEnemy24" parent="." instance=ExtResource( 7 )]
+position = Vector2( -127.487, -106.769 )
+
+[node name="ClassicEnemy25" parent="." instance=ExtResource( 7 )]
+position = Vector2( -63.487, -106.769 )
+
+[node name="ClassicEnemy26" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0.513, -106.769 )
+
+[node name="ClassicEnemy27" parent="." instance=ExtResource( 7 )]
+position = Vector2( 64.513, -106.769 )
+
+[node name="ClassicEnemy28" parent="." instance=ExtResource( 7 )]
+position = Vector2( 128.513, -106.769 )
+
+[node name="ClassicEnemy29" parent="." instance=ExtResource( 7 )]
+position = Vector2( 192.513, -106.769 )
+
+[node name="ClassicEnemy30" parent="." instance=ExtResource( 7 )]
+position = Vector2( 256.513, -106.769 )
+
+[node name="ClassicEnemyDive" parent="." instance=ExtResource( 8 )]
+position = Vector2( -319.487, -234.769 )
+
+[node name="ClassicEnemyDive2" parent="." instance=ExtResource( 8 )]
+position = Vector2( -255.487, -234.769 )
+
+[node name="ClassicEnemyDive3" parent="." instance=ExtResource( 8 )]
+position = Vector2( -191.487, -234.769 )
+
+[node name="ClassicEnemyDive4" parent="." instance=ExtResource( 8 )]
+position = Vector2( -127.487, -234.769 )
+
+[node name="ClassicEnemyDive5" parent="." instance=ExtResource( 8 )]
+position = Vector2( -63.487, -234.769 )
+
+[node name="ClassicEnemyDive6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0.513, -234.769 )
+
+[node name="ClassicEnemyDive7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 64.513, -234.769 )
+
+[node name="ClassicEnemyDive8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 128.513, -234.769 )
+
+[node name="ClassicEnemyDive9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 192.513, -234.769 )
+
+[node name="ClassicEnemyDive10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 256.513, -234.769 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 384.513
+margin_top = -290.769
+margin_right = 496.513
+margin_bottom = -234.769
+focus_mode = 0
+custom_fonts/font = SubResource( 3 )
+enabled_focus_mode = 0
+text = "End Game"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+referencePath = "res://Scenes/MenuScreen.tscn"
+[connection signal="area_entered" from="Player_Galaga/Hitbox" to="Player_Galaga" method="_on_Hitbox_area_entered"]

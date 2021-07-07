@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Art/ammo_powerup.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Ammo_powerup.gd" type="Script" id=2]
+[ext_resource path="res://Audio/AmmoPing.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 198.855
+
+[node name="Ammo_powerup" type="RigidBody2D" groups=[
+"Powerup",
+]]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.27374e-13, -2.27374e-13 )
+scale = Vector2( 0.096341, 0.0846376 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hitbox" type="Area2D" parent="Sprite" groups=[
+"Powerup",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox"]
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="AmmoPing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="area_entered" from="Sprite/Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

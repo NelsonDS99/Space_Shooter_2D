@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/Spaceship_art_pack_larger/Background/BackdropBlackLittleSparkBlack.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/MainMenuButtonButton.gd" type="Script" id=3]
+[ext_resource path="res://Themes/SelectedButtonTheme.tres" type="StyleBox" id=4]
+[ext_resource path="res://Themes/NonSelectedButtonTheme.tres" type="StyleBox" id=5]
+[ext_resource path="res://Art/Fonts/Pixeboy-z8XGD.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 6 )
+
+[node name="CreditsScreen" type="Node2D"]
+
+[node name="MenuBackground" type="Sprite" parent="."]
+position = Vector2( 510.44, 301.175 )
+scale = Vector2( 2.02734, 1.1984 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 416.0
+margin_top = 384.0
+margin_right = 608.0
+margin_bottom = 448.0
+focus_neighbour_top = NodePath("../CreditsButton")
+focus_neighbour_bottom = NodePath("../NewGameButton")
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK TO MAIN MENU"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+referencePath = "res://Scenes/MenuScreen.tscn"
+startFocused = true
+
+[node name="FinalScoreLabel" type="Label" parent="."]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.909804, 0.0196078, 1 )
+text = "Nelson Scott (ndscott@cpp.edu/012656631)
+Abdullah Kobaissi (aakobaissi@cpp.edu/014783002)
+Talha khan (tkhan@cpp.edu/012665627)
+
+
+Music:
+main menu music track - nene
+main menu music track 2 - Mega Pixel Music Lab
+end screen music track - Otto Halmén"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

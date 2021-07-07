@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Audio/BlasterFX_1/AmmoPing.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scripts/AmmoPing.gd" type="Script" id=2]
+
+[node name="AmmoPing" type="AudioStreamPlayer2D"]
+stream = ExtResource( 1 )
+script = ExtResource( 2 )

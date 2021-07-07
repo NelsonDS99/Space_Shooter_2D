@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Enemy1Explosion.gd" type="Script" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 275.86
+initial_velocity_random = 0.53
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 7.0
+color = Color( 0.121569, 0.756863, 0.862745, 1 )
+
+[node name="Enemy1Explosion" type="Particles2D"]
+position = Vector2( 551.129, 298.575 )
+emitting = false
+amount = 50
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.62
+process_material = SubResource( 1 )
+script = ExtResource( 1 )

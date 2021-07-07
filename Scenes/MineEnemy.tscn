@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/MineEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Art/Spaceship_art_pack_2/D6.png" type="Texture" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -113.513, 4.82881, 0, 0, 0, 0, -127.944, 45.6023, 0, 0, 0, 0, -139.669, 86.3757, 0, 0, 0, 0, -146.884, 142.959, 0, 0, 0, 0, -148.688, 792.006, 0, 0, 0, 0, -138.767, 856.911, 0, 0, 0, 0, -117.121, 906.837 )
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[node name="MineEnemy" type="KinematicBody2D"]
+position = Vector2( 0, 20 )
+rotation = -1.5708
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 118.675, -5.22487 )
+scale = Vector2( 1.04651, 1.13431 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( -113.513, 4.82881 )
+rotate = false
+
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
+texture = ExtResource( 2 )
+
+[node name="Hitbox" type="Area2D" parent="Path2D/PathFollow2D/Sprite" groups=[
+"Enemy",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Sprite/Hitbox"]
+scale = Vector2( 2.49609, 3.01135 )
+shape = SubResource( 2 )
+
+[node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.1
+[connection signal="area_entered" from="Path2D/PathFollow2D/Sprite/Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]

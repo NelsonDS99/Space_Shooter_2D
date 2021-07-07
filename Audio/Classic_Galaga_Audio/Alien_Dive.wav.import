@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Alien_Dive.wav-3ae88d0cb4302f3cdc4f034078c9812f.sample"
+
+[deps]
+
+source_file="res://Audio/Classic_Galaga_Audio/Alien_Dive.wav"
+dest_files=[ "res://.import/Alien_Dive.wav-3ae88d0cb4302f3cdc4f034078c9812f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

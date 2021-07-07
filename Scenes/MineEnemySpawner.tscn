@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/MineEnemySpawn.gd" type="Script" id=1]
+
+[node name="MineEnemySpawner" type="Node"]
+
+[node name="MineEnemySpawn" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+script = ExtResource( 1 )
+[connection signal="timeout" from="MineEnemySpawn" to="MineEnemySpawn" method="_on_MineEnemySpawn_timeout"]

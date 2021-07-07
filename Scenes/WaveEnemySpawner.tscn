@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/WaveEnemySpawnerTimer.gd" type="Script" id=1]
+
+[node name="WaveEnemySpawner" type="Node"]
+
+[node name="WaveEnemySpawnerTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+script = ExtResource( 1 )
+[connection signal="timeout" from="WaveEnemySpawnerTimer" to="WaveEnemySpawnerTimer" method="_on_WaveEnemySpawnerTimer_timeout"]
